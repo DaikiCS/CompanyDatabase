@@ -1,5 +1,5 @@
 # Project Name: 
-Company Databse
+Company Database
 
 # About:
 This is a project that I did in Database Systems class. It consists of three data sets, which are employee, work, and department and some other relations. 
