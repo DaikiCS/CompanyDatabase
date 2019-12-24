@@ -371,45 +371,45 @@ INSERT INTO DoJob VALUES('173-156-1245', 'Recruit new employees');
 
    -- using HAVING
 
-   -- 31. average budget of all the work going on now by department
+   -- 36. average budget of all the work going on now by department
       SELECT dpt, AVG(budget) FROM manage GROUP BY dpt;
-   -- 32. total budget of work by dpt that is greater than $10000.00
+   -- 37. total budget of work by dpt that is greater than $10000.00
       SELECT dpt, SUM(budget) FROM Manage GROUP BY dpt HAVING SUM(budget)
       > 10000.00; 
-   -- 33. maximum price of budget 
+   -- 38. maximum price of budget 
       SELECT MAX(budget) FROM Manage;
-   -- 34. minimum price of budget 
+   -- 39. minimum price of budget 
       SELECT MIN(budget) FROM Manage;
-   -- 35. dpt that has more than or equal to 2 on going project
+   -- 40. dpt that has more than or equal to 2 on going project
       SELECT dpt FROM Manage GROUP BY dpt HAVING COUNT(dpt) >= 2;
    
  -- ============================== Database Modification =============================
 
-   -- 36. Insert
+   -- 41. Insert
       INSERT INTO Employee VALUES('123-000-0001', 'John Causey', 'HR Specialist', 'jcausey@dev.com', '8701111111');
   
-   -- 37. Insert into a table from subquery
+   -- 42. Insert into a table from subquery
       INSERT INTO Married (SELECT h.ssn, w.ssn FROM Employee h, Employee w WHERE h.ssn = '756-456-6590' AND w.ssn = '596-456-7845');
 
-   -- 38. Delete
+   -- 43. Delete
       DELETE FROM Employee WHERE ssn = '123-000-0001';
   
-   -- 39. Delete 
+   -- 44. Delete 
       DELETE FROM Employee e WHERE EXISTS(SELECT husband, wife FROM Married
       WHERE e.ssn = husband OR e.ssn = wife);
 
-   -- 40. Update
+   -- 45. Update
       UPDATE Work SET location = 'Jonesboro' WHERE location IS NULL;
 
-   -- 41. Update
+   -- 46. Update
       UPDATE Manage SET budget = 10000.00 WHERE budget > 10000.00;
   
  -- ============================== View =============================
-   -- 42. create view low budget work
+   -- 47. create view low budget work
       CREATE VIEW LowBWork(dpt, work, budget) AS SELECT dpt, work, budget FROM Manage WHERE budget <= 5000.00;
 
  -- ============================== PSM =============================
-    -- 44. one PSM
+    -- 48. one PSM
       CREATE OR REPLACE FUNCTION UpdateB()
       RETURNS trigger
       AS $$
@@ -420,7 +420,7 @@ INSERT INTO DoJob VALUES('173-156-1245', 'Recruit new employees');
         END;
       $$ LANGUAGE plpgsql;
 
-   -- 43. one trigger if the budget change is greater than current + $5000
+   -- 49. one trigger if the budget change is greater than current + $5000
       CREATE TRIGGER BTrig
         AFTER UPDATE OF budget ON Manage
         FOR EACH ROW
