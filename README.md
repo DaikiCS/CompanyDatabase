@@ -1,6 +1,11 @@
 # Project Name: 
 Company Database
 
+# Tools:
+1. PostgreSQL
+2. PHP
+3. VS Code
+
 # About:
 This is a project that I did in Database Systems class. It consists of three data sets, which are employee, work, and department and some other relations. 
 
